@@ -20,25 +20,17 @@ export default function Navbar(props) {
             <Link className="nav-link" to="/about">{props.aboutText}</Link>
             </li>
         </ul>
-        <form className="d-flex">
-            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-            <button className="btn btn-primary" type="submit">Search</button>
-        </form>
-        
-        <div className="btn-group " role="group" aria-label="Basic radio toggle button group">
         <div className={`form-check form-switch mx-2 text-${props.mode === 'light'?'dark':'light'}`}>
         <input className="form-check-input" type="checkbox" onClick={props.toggleDMode} role="switch" id="flexSwitchCheckDefault"/>
         <label className="form-check-label" htmlFor="flexSwitchCheckDefault" >Enable dark mode</label>
         </div>
-        <input type="radio" className="btn-check" name="btnradio" id="btnradio1" onClick={props.red} autoComplete="off" />
-        <label className="btn btn-outline-primary mx-2" style={{borderRadius:'50%', backgroundColor:'red', color: 'black '}}  htmlFor="btnradio1"></label>
 
-        <input type="radio" className="btn-check" name="btnradio" id="btnradio2" onClick={props.blue} autoComplete="off"/>
-        <label className="btn btn-outline-primary mx-2" style={{borderRadius:'50%', backgroundColor:'blue', color: 'black '}}htmlFor="btnradio2"></label>
-
-        <input type="radio" className="btn-check" name="btnradio" id="btnradio3" onClick={props.green} autoComplete="off"/>
-        <label className="btn btn-outline-primary mx-2" style={{borderRadius:'50%', backgroundColor:'green', color: 'black '}}htmlFor="btnradio3"></label>
-        </div>
+        <div className="d-flex " >
+        <div className="bg-danger rounded mx-2" onClick={()=>{props.bgColor("danger")}} style={{height:'30px',width:'30px',cursor:'pointer'}} ></div>
+        <div className="bg-info rounded mx-2" onClick={()=>{props.bgColor("info")}} style={{height:'30px',width:'30px',cursor:'pointer'}} ></div>
+        <div className="bg-success rounded mx-2" onClick={()=>{props.bgColor("success")}} style={{height:'30px',width:'30px',cursor:'pointer'}} ></div>
+        <div className="bg-warning rounded mx-2" onClick={()=>{props.bgColor("warning")}} style={{height:'30px',width:'30px',cursor:'pointer'}} ></div>
+         </div>
     </div>
     </div>
 </nav>

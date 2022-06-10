@@ -13,6 +13,7 @@ import {BrowserRouter as Router,Routes,Route} from "react-router-dom";
 function App() {
   const [mode,setMode] = useState('light');
   const [alert,setAlert] = useState(null);
+  
 
   const showAlert = (message,type) =>{
     setAlert({
@@ -25,6 +26,7 @@ function App() {
   }
 
   const toggleDarkMode = () =>{
+    removeBodyClass();
     if(mode === 'light'){
       setMode('dark');
       document.body.style.backgroundColor='rgb(23 25 26)';
@@ -36,26 +38,24 @@ function App() {
       showAlert("Light mode is enabled successfully","success")
     }
   }
-  const blueMode = () =>{
-      setMode('dark');
-      document.body.style.backgroundColor='#0a1b2f';
-      showAlert("Blue mode is enabled successfully","success");
+  const removeBodyClass=()=>{
+    document.body.classList.remove('bg-light');
+    document.body.classList.remove('bg-info');
+    document.body.classList.remove('bg-success');
+    document.body.classList.remove('bg-danger');
+    document.body.classList.remove('bg-warning');
+    document.body.classList.remove('bg-dark');
   }
-  const redMode = () =>{
-    setMode('dark');
-    document.body.style.backgroundColor='rgb(141 16 16)';
-    showAlert("Red mode is enabled successfully","success");
-}
-const greenMode = () =>{
-  setMode('dark');
-  document.body.style.backgroundColor='rgb(11 69 35)';
-  showAlert("Green mode is enabled successfully","success");
-}
+  const bgc = (cls) =>{
+    removeBodyClass();
+    document.body.classList.add('bg-'+cls);
+  }
+  
 
   return (
     <>
       <Router>
-      <Navbar title="TextUtils" mode={mode} toggleDMode={toggleDarkMode} blue={blueMode} red={redMode} green={greenMode}/*aboutText="About Us"*//>
+      <Navbar title="TextUtils" mode={mode} toggleDMode={toggleDarkMode} bgColor={bgc}/*aboutText="About Us"*//>
       <Alert alert={alert} />
       <div className ="my-3">
         <Routes>
